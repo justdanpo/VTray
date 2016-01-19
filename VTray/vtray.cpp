@@ -878,6 +878,13 @@ void vtray::onSysTray(Message& message)
 			message.lResult = (BOOL)IconDelete((PLSNOTIFYICONDATA)message.lParam);
 			break;
 		}
+		//disappearing Windows Update icon workaround
+		case NIM_SETFOCUS:
+		case NIM_SETVERSION:
+		{
+			message.lResult = true;
+			break;
+		}
 		default:
 		{
 			message.lResult = FALSE;
